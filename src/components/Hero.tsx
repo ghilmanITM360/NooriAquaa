@@ -148,75 +148,70 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="animate-float relative z-10"
+              className="relative z-10 flex items-center justify-center"
             >
-              {/* Stylized 19L Bottle */}
-              <div className="flex flex-col items-center">
-                {/* Cap */}
-                <div
-                  className="w-16 h-8 rounded-t-full mb-0"
-                  style={{ background: "linear-gradient(180deg, #29C7F6, #1a9bc4)" }}
-                />
-                {/* Neck */}
-                <div
-                  className="w-10 h-12"
-                  style={{ background: "linear-gradient(180deg, #1a9bc4, #0e6e8a)" }}
-                />
-                {/* Body */}
-                <div
-                  className="w-48 h-64 rounded-[30px] relative overflow-hidden"
-                  style={{
-                    background:
-                      "linear-gradient(160deg, rgba(41,199,246,0.25) 0%, rgba(14,30,50,0.8) 50%, rgba(41,199,246,0.15) 100%)",
-                    border: "2px solid rgba(41,199,246,0.35)",
-                    backdropFilter: "blur(10px)",
-                    boxShadow:
-                      "0 0 40px rgba(41,199,246,0.2), inset 0 0 30px rgba(41,199,246,0.05)",
-                  }}
-                >
-                  {/* Water fill effect */}
-                  <div
-                    className="absolute bottom-0 left-0 right-0 h-3/4 rounded-b-[28px]"
-                    style={{
-                      background:
-                        "linear-gradient(180deg, rgba(41,199,246,0.15) 0%, rgba(41,199,246,0.4) 100%)",
-                    }}
-                  />
-                  {/* Label */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <div
-                        className="text-2xl font-bold"
-                        style={{ color: "#29C7F6", fontFamily: "'Sora', sans-serif" }}
-                      >
-                        19L
-                      </div>
-                      <div className="text-xs font-semibold text-white tracking-widest uppercase">
-                        Noori Aqua
-                      </div>
-                      <div className="text-xs mt-1" style={{ color: "#94A3B8" }}>
-                        Pure Water
-                      </div>
-                    </div>
-                  </div>
-                  {/* Shine */}
-                  <div
-                    className="absolute top-4 left-4 w-8 h-16 rounded-full opacity-20"
-                    style={{
-                      background: "linear-gradient(180deg, white 0%, transparent 100%)",
-                      transform: "rotate(-15deg)",
-                    }}
-                  />
-                </div>
-                {/* Base */}
-                <div
-                  className="w-40 h-6 rounded-b-[20px]"
-                  style={{
-                    background: "linear-gradient(180deg, rgba(41,199,246,0.2), rgba(41,199,246,0.1))",
-                    border: "1px solid rgba(41,199,246,0.2)",
-                  }}
-                />
-              </div>
+              {/* Dark stage panel */}
+              <div
+                className="hero-bottle-stage absolute rounded-[40px] z-0"
+                style={{
+                  background: "linear-gradient(180deg, #0a1828 0%, #040d18 100%)",
+                  border: "1px solid rgba(41,199,246,0.10)",
+                  boxShadow:
+                    "0 40px 120px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.04)",
+                }}
+              />
+
+              {/* Large aqua glow behind bottle */}
+              <div
+                className="absolute animate-glow-pulse"
+                style={{
+                  width: "300px",
+                  height: "380px",
+                  borderRadius: "50%",
+                  background:
+                    "radial-gradient(ellipse at 50% 55%, rgba(41,199,246,0.30) 0%, transparent 70%)",
+                  filter: "blur(32px)",
+                }}
+              />
+
+              {/* Secondary blue glow — bottom depth */}
+              <div
+                className="absolute"
+                style={{
+                  bottom: "60px",
+                  width: "180px",
+                  height: "140px",
+                  borderRadius: "50%",
+                  background:
+                    "radial-gradient(ellipse, rgba(90,185,255,0.18) 0%, transparent 70%)",
+                  filter: "blur(22px)",
+                }}
+              />
+
+              {/* Reflection ellipse beneath bottle */}
+              <div
+                className="absolute"
+                style={{
+                  bottom: "28px",
+                  width: "140px",
+                  height: "20px",
+                  borderRadius: "50%",
+                  background: "rgba(41,199,246,0.18)",
+                  filter: "blur(10px)",
+                }}
+              />
+
+              {/* Real bottle image */}
+              <motion.img
+                src="/waterBottle.png"
+                alt="Noori Aqua 19L Premium Water Bottle"
+                className="relative z-20 w-[210px] lg:w-[250px] animate-float"
+                style={{
+                  filter:
+                    "drop-shadow(0 40px 60px rgba(0,0,0,0.85)) drop-shadow(0 0 50px rgba(41,199,246,0.30)) drop-shadow(0 -4px 14px rgba(255,255,255,0.07))",
+                  objectFit: "contain",
+                }}
+              />
             </motion.div>
 
             {/* Floating Chips */}
@@ -225,7 +220,7 @@ export default function Hero() {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="absolute top-16 left-0 animate-float-chip-1"
+              className="absolute top-10 -left-6 z-10 animate-float-chip-1"
             >
               <div
                 className="px-4 py-2.5 rounded-2xl text-sm font-semibold text-white flex items-center gap-2"
@@ -246,7 +241,7 @@ export default function Hero() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
-              className="absolute top-1/3 right-0 animate-float-chip-2"
+              className="absolute top-1/3 -right-10 z-10 animate-float-chip-2"
             >
               <div
                 className="px-4 py-2.5 rounded-2xl text-sm font-semibold text-white flex items-center gap-2"
@@ -267,7 +262,7 @@ export default function Hero() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="absolute bottom-24 left-4 animate-float-chip-3"
+              className="absolute bottom-12 -left-2 z-10 animate-float-chip-3"
             >
               <div
                 className="px-4 py-2.5 rounded-2xl text-sm font-semibold text-white flex items-center gap-2"

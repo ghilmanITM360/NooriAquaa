@@ -59,8 +59,9 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Floating animations */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+  0%   { transform: translateY(0px) rotate(-1deg); }
+  50%  { transform: translateY(-18px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(-1deg); }
 }
 
 @keyframes float-chip-1 {
@@ -88,7 +89,20 @@ h1, h2, h3, h4, h5, h6 {
   100% { transform: scale(2); opacity: 0; }
 }
 
-.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float { animation: float 7s ease-in-out infinite; }
+
+/* Hero bottle stage — responsive panel behind the bottle */
+.hero-bottle-stage {
+  width: 340px;
+  height: 430px;
+}
+
+@media (min-width: 1024px) {
+  .hero-bottle-stage {
+    width: 380px;
+    height: 470px;
+  }
+}
 .animate-float-chip-1 { animation: float-chip-1 7s ease-in-out infinite; }
 .animate-float-chip-2 { animation: float-chip-2 8s ease-in-out infinite 0.5s; }
 .animate-float-chip-3 { animation: float-chip-3 7.5s ease-in-out infinite 1s; }

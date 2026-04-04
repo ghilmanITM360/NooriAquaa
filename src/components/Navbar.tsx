@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Droplets, Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X, MessageCircle } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -57,16 +57,53 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-18 py-4">
             {/* Logo */}
-            <a href="#home" className="flex items-center gap-2.5 group">
+            <a href="#home" className="flex items-center gap-3 group">
               <div
-                className="w-9 h-9 rounded-xl flex items-center justify-center transition-transform group-hover:scale-105"
-                style={{ background: "linear-gradient(135deg, #29C7F6, #5AB9FF)" }}
+                className="relative flex items-center justify-center transition-all duration-300 group-hover:scale-[1.03] group-hover:-translate-y-0.5"
               >
-                <Droplets className="w-5 h-5 text-white" />
+                {/* Glow behind logo */}
+                <div
+                  className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    filter: "blur(16px)",
+                    background: "rgba(41,199,246,0.18)",
+                    transform: "scale(1.15)",
+                  }}
+                />
+
+                {/* Logo image in original oval shape */}
+                <div
+                  className="relative overflow-hidden rounded-full"
+                  style={{
+                    width: "72px",
+                    height: "44px",
+                    border: "1px solid rgba(41,199,246,0.14)",
+                    background: "rgba(10,20,35,0.75)",
+                    boxShadow: "0 10px 30px rgba(0,0,0,0.35), 0 0 18px rgba(41,199,246,0.10)",
+                    backdropFilter: "blur(10px)",
+                  }}
+                >
+                  <img
+                    src="/logo.png"
+                    alt="Noori Aqua"
+                    className="w-full h-full object-cover"
+                    style={{
+                      objectPosition: "center",
+                      filter: "saturate(0.92) brightness(0.96) contrast(1.02)",
+                    }}
+                  />
+                  {/* Subtle cyan overlay to integrate with navbar colors */}
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background: "linear-gradient(135deg, rgba(41,199,246,0.06), transparent 75%)",
+                    }}
+                  />
+                </div>
               </div>
               <span
-                className="text-xl font-bold text-white tracking-tight"
-                style={{ fontFamily: "'Sora', sans-serif" }}
+                className="text-[20px] lg:text-[22px] font-bold tracking-[-0.03em] transition-colors duration-300 group-hover:text-white"
+                style={{ fontFamily: "'Sora', sans-serif", color: "#F8FAFC" }}
               >
                 Noori Aqua
               </span>
