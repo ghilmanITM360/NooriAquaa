@@ -18,7 +18,7 @@ export default function Contact() {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     await handleSubmit(e);
-    if (state.succeeded || true) {
+    if (state.succeeded) {
       setShowSuccess(true);
       setTimeout(() => setShowSuccess(false), 5000);
     }
