@@ -91,6 +91,36 @@ h1, h2, h3, h4, h5, h6 {
 
 .animate-float { animation: float 7s ease-in-out infinite; }
 
+/* Additional float chip variants */
+@keyframes float-chip-4 {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50% { transform: translateY(-12px) rotate(1deg); }
+}
+@keyframes float-chip-5 {
+  0%, 100% { transform: translateY(-8px); }
+  50% { transform: translateY(8px); }
+}
+@keyframes float-chip-6 {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  33% { transform: translateY(-10px) translateX(4px); }
+  66% { transform: translateY(-4px) translateX(-4px); }
+}
+@keyframes mini-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes scan-line {
+  0%   { transform: translateY(0%); opacity: 0.6; }
+  50%  { opacity: 1; }
+  100% { transform: translateY(200px); opacity: 0; }
+}
+
+.animate-float-chip-4 { animation: float-chip-4 9s ease-in-out infinite 1.5s; }
+.animate-float-chip-5 { animation: float-chip-5 8s ease-in-out infinite 0.7s; }
+.animate-float-chip-6 { animation: float-chip-6 10s ease-in-out infinite 2s; }
+.animate-mini-float   { animation: mini-float 6s ease-in-out infinite; }
+.animate-scan-line    { animation: scan-line 2.5s ease-in-out infinite; }
+
 /* Hero bottle stage — responsive panel behind the bottle */
 .hero-bottle-stage {
   width: 340px;
