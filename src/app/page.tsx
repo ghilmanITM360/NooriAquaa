@@ -13,7 +13,7 @@ import IndustryShowcase from "@/components/sections/IndustryShowcase";
 import HowItWorks from "@/components/sections/HowItWorks";
 import BottleOptions from "@/components/sections/BottleOptions";
 import TransformationJourney from "@/components/sections/TransformationJourney";
-import Gallery from "@/components/sections/Gallery";
+import Gallery from "@/components/gallery/GallerySection";
 import Standards from "@/components/sections/Standards";
 import Testimonials from "@/components/sections/Testimonials";
 import FinalCTA from "@/components/sections/FinalCTA";

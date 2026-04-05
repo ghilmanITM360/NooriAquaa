@@ -1,100 +1,84 @@
-export interface GalleryItem {
-  id: string;
-  title: string;
-  category: string;
-  description: string;
-  image: string;
-  accent: string;
-  /** Number of grid columns this card occupies on desktop */
-  colSpan: 1 | 2;
-}
+import type { GalleryItem } from "@/types/gallery";
 
-/**
- * Layout (4-column desktop grid, 3 rows):
- *   Row 1: [conferences ×2] [hotels ×1]  [weddings ×1]
- *   Row 2: [offices ×1]    [restaurants ×2] [mun ×1]
- *   Row 3: [school ×2]     [sports ×2]
- */
 export const galleryItems: GalleryItem[] = [
-  // ── Row 1 ──────────────────────────────────────────────────────────────────
   {
-    id: "conferences",
-    title: "Corporate Conferences",
-    category: "Premium Events",
+    id: "mtj",
+    title: "MTJ",
+    category: "Luxury Fashion",
     description:
-      "High-profile summits and corporate gatherings branded bottle-to-bottle.",
-    image: "/industries/conferences.png",
-    accent: "#6366F1",
-    colSpan: 2,
+      "Premium branded bottles created for MTJ and luxury gifting experiences.",
+    image: "/gallery/mtj.png",
+    accent: "#D4AF37",
+    expandable: true,
   },
   {
-    id: "hotels",
-    title: "Luxury Hotels",
-    category: "Hospitality",
+    id: "vital-group",
+    title: "Vital Group",
+    category: "Corporate FMCG",
     description:
-      "Custom-labeled water that elevates every guest room and fine-dining table.",
-    image: "/industries/hotels.png",
-    accent: "#29C7F6",
-    colSpan: 1,
+      "Custom branded packaging for one of Pakistan's leading FMCG groups.",
+    image: "/gallery/vitalGroup.png",
+    accent: "#26C6B5",
+    expandable: false,
   },
   {
-    id: "weddings",
-    title: "Premium Weddings",
-    category: "Celebrations",
+    id: "vital-tea",
+    title: "Vital Tea",
+    category: "Tea Brand",
     description:
-      "Elegant keepsake bottles that make every guest feel the love.",
-    image: "/industries/weddings.png",
-    accent: "#EC4899",
-    colSpan: 1,
-  },
-  // ── Row 2 ──────────────────────────────────────────────────────────────────
-  {
-    id: "offices",
-    title: "Corporate Offices",
-    category: "Workplace",
-    description: "Daily branded hydration that keeps teams proud of their space.",
-    image: "/industries/offices.png",
-    accent: "#10B981",
-    colSpan: 1,
+      "Signature branded water bottles designed for Vital Tea campaigns and events.",
+    image: "/gallery/vitalTea.png",
+    accent: "#5DCB5A",
+    expandable: false,
   },
   {
-    id: "restaurants",
-    title: "Fine Dining",
-    category: "F&B Industry",
+    id: "malka",
+    title: "Malka",
+    category: "Restaurant & Hospitality",
     description:
-      "Elevate table presentation — guests notice the premium touch.",
-    image: "/industries/restaurants.png",
-    accent: "#F59E0B",
-    colSpan: 2,
+      "Elegant branded bottles inspired by Malka, The Queen of Taste.",
+    image: "/gallery/malka.png",
+    accent: "#B53939",
+    expandable: false,
   },
   {
-    id: "mun",
-    title: "MUN Tournaments",
-    category: "Academic Events",
+    id: "waheed",
+    title: "Waheed Kabab",
+    category: "Food Brand",
     description:
-      "Professional branding on every delegate desk at Karachi MUN 2024.",
-    image: "/industries/mun.png",
-    accent: "#8B5CF6",
-    colSpan: 1,
-  },
-  // ── Row 3 ──────────────────────────────────────────────────────────────────
-  {
-    id: "school",
-    title: "Schools & Universities",
-    category: "Education",
-    description: "Campus-branded bottles that build school pride every day.",
-    image: "/industries/school.png",
-    accent: "#06B6D4",
-    colSpan: 2,
+      "Custom bottle presentation for one of Karachi's most recognizable food brands.",
+    image: "/gallery/waheed.png",
+    accent: "#FF4D4D",
+    expandable: true,
   },
   {
-    id: "sports",
-    title: "Sports Events",
-    category: "Athletics",
+    id: "ay-traders",
+    title: "AY Traders",
+    category: "Salt & Export",
     description:
-      "Keep athletes hydrated with your brand front and center on every bottle.",
-    image: "/industries/sports.png",
-    accent: "#EF4444",
-    colSpan: 2,
+      "Premium Himalayan-inspired bottle branding for AY Traders Pakistan.",
+    image: "/gallery/ay.png",
+    accent: "#3DA5FF",
+    expandable: false,
+  },
+  {
+    id: "meezan",
+    title: "Meezan Bank",
+    category: "Islamic Banking",
+    description:
+      "Professional corporate bottle branding for Pakistan's leading Islamic bank.",
+    image: "/gallery/mezaan.png",
+    accent: "#7C4DFF",
+    expandable: true,
+  },
+  {
+    id: "vital",
+    title: "Vital",
+    category: "Consumer Brand",
+    description:
+      "Bright, bold bottle branding inspired by Vital's iconic packaging.",
+    image: "/gallery/vital.png",
+    accent: "#FF6B2C",
+    expandable: true,
   },
 ];
