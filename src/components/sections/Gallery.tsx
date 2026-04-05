@@ -79,7 +79,7 @@ function GalleryCard({
 
       {/* ── Bottom content panel (glass) ── */}
       <div
-        className="absolute bottom-0 left-0 right-0 p-4 lg:p-5 z-10 translate-y-[6px] group-hover:translate-y-0 transition-transform duration-400 ease-out"
+        className="absolute bottom-0 left-0 right-0 p-4 lg:p-5 z-10 translate-y-[6px] group-hover:translate-y-0 transition-transform duration-500 ease-out"
       >
         <div
           className="rounded-[14px] p-4 lg:p-5"
@@ -101,7 +101,7 @@ function GalleryCard({
             {item.title}
           </h3>
           <p
-            className="text-[12px] lg:text-[13px] leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-400"
+            className="text-[12px] lg:text-[13px] leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500"
             style={{ color: "#94A3B8" }}
           >
             {item.description}
