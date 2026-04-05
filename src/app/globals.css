@@ -138,3 +138,9 @@ h1, h2, h3, h4, h5, h6 {
 .animate-float-chip-3 { animation: float-chip-3 7.5s ease-in-out infinite 1s; }
 .animate-glow-pulse { animation: glow-pulse 4s ease-in-out infinite; }
 .animate-pulse-ring { animation: pulse-ring 2s ease-out infinite; }
+
+@keyframes card-shimmer {
+  0%   { transform: translateX(-200%); }
+  100% { transform: translateX(400%); }
+}
+.animate-card-shimmer { animation: card-shimmer 6s ease-in-out infinite; }
