@@ -1,228 +1,139 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { type CSSProperties, useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import { transformStages } from "@/data/transformStages";
 
 function StageBottle({ stage }: { stage: number }) {
-  const stages = [
-    {
-      // 0: Blank bottle
-      bodyBg: "rgba(200,220,240,0.12)",
-      capColor: "#64748B",
-      hasLabel: false,
-      hasLogo: false,
-      labelStyle: {},
-      shine: true,
-    },
-    {
-      // 1: Logo placed
-      bodyBg: "rgba(200,220,240,0.18)",
-      capColor: "#64748B",
-      hasLabel: true,
-      hasLogo: true,
-      labelStyle: { background: "white" },
-      shine: true,
-    },
-    {
-      // 2: Label designed
-      bodyBg: "rgba(200,220,240,0.2)",
-      capColor: "#29C7F6",
-      hasLabel: true,
-      hasLogo: true,
-      labelStyle: {
-        background: "linear-gradient(135deg, #0D1B2A, #1E3755)",
-      },
-      shine: true,
-    },
-    {
-      // 3: Digital mockup
-      bodyBg: "rgba(41,199,246,0.08)",
-      capColor: "#29C7F6",
-      hasLabel: true,
-      hasLogo: true,
-      labelStyle: {
-        background: "linear-gradient(135deg, #07111F, #0D1B2A)",
-        border: "1px solid rgba(41,199,246,0.3)",
-      },
-      shine: true,
-    },
-    {
-      // 4: In production
-      bodyBg: "rgba(41,199,246,0.1)",
-      capColor: "#29C7F6",
-      hasLabel: true,
-      hasLogo: true,
-      labelStyle: {
-        background: "linear-gradient(135deg, #07111F, #0D1B2A)",
-        border: "1px solid rgba(41,199,246,0.4)",
-      },
-      shine: true,
-    },
-    {
-      // 5: Delivered
-      bodyBg: "rgba(41,199,246,0.14)",
-      capColor: "#25D366",
-      hasLabel: true,
-      hasLogo: true,
-      labelStyle: {
-        background: "linear-gradient(135deg, #07111F, #0D1B2A)",
-        border: "1px solid rgba(41,199,246,0.5)",
-        boxShadow: "0 4px 20px rgba(41,199,246,0.3)",
-      },
-      shine: true,
-    },
+  const BOTTLE_W = 96;
+  const CAP_H = 18;
+  const NECK_H = 14;
+  const BODY_H = 173; // 205 total − 18 cap − 14 neck
+
+  const stageCfg = [
+    { bodyBg: "rgba(180,215,240,0.09)", capColor: "#64748B", hasLabel: false, capGlow: false, glowColor: "" },
+    { bodyBg: "rgba(190,218,240,0.13)", capColor: "#64748B", hasLabel: true,  capGlow: false, glowColor: "" },
+    { bodyBg: "rgba(200,220,240,0.16)", capColor: "#29C7F6", hasLabel: true,  capGlow: false, glowColor: "" },
+    { bodyBg: "rgba(41,199,246,0.08)",  capColor: "#29C7F6", hasLabel: true,  capGlow: true,  glowColor: "rgba(41,199,246,0.18)" },
+    { bodyBg: "rgba(41,199,246,0.10)",  capColor: "#29C7F6", hasLabel: true,  capGlow: true,  glowColor: "rgba(41,199,246,0.14)" },
+    { bodyBg: "rgba(41,199,246,0.14)",  capColor: "#25D366", hasLabel: true,  capGlow: true,  glowColor: "rgba(41,199,246,0.30)" },
   ];
 
-  const s = stages[stage] ?? stages[0];
-  const isMultiple = stage === 4;
+  const cfg = stageCfg[stage] ?? stageCfg[0];
+  const isProduction = stage === 4;
+
+  // Label position per stage — all within the body element, safe from the neck
+  const getLabelPos = () => {
+    if (stage === 1) return { top: "30%", left: "26%", right: "26%", height: "34%" };
+    if (stage === 2) return { top: "26%", left: "16%", right: "16%", height: "48%" };
+    return { top: "24%", left: "14%", right: "14%", height: "52%" };
+  };
+
+  // Label visual styles per stage
+  const getLabelStyle = (): CSSProperties => {
+    if (stage === 1) return { background: "rgba(255,255,255,0.96)", borderRadius: 4 };
+    if (stage === 2) return { background: "linear-gradient(160deg, #0D1B2A, #1E3755)", borderRadius: 5, border: "1px solid rgba(41,199,246,0.20)" };
+    if (stage === 3) return { background: "linear-gradient(160deg, #07111F, #0D1B2A)", borderRadius: 6, border: "1px solid rgba(41,199,246,0.40)", boxShadow: "0 2px 18px rgba(41,199,246,0.20)" };
+    if (stage === 4) return { background: "linear-gradient(160deg, #07111F, #0D1B2A)", borderRadius: 6, border: "1px solid rgba(41,199,246,0.40)", boxShadow: "0 2px 18px rgba(41,199,246,0.20)" };
+    return { background: "linear-gradient(160deg, #07111F, #0D1B2A)", borderRadius: 6, border: "1px solid rgba(41,199,246,0.60)", boxShadow: "0 4px 28px rgba(41,199,246,0.38)" };
+  };
+
+  // Label content per stage — progressively richer
+  const getLabelContent = () => {
+    // Stage 02: simple white sticker
+    if (stage === 1) {
+      return (
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}>
+          <div style={{ fontSize: 9, fontWeight: 900, letterSpacing: "0.10em", color: "#0D1B2A" }}>NOORI AQUA</div>
+          <div style={{ width: 28, height: 1, background: "#94A3B8", borderRadius: 1 }} />
+          <div style={{ fontSize: 6.5, letterSpacing: "0.14em", color: "#64748B", textTransform: "uppercase" }}>Custom Bottles</div>
+        </div>
+      );
+    }
+    // Stage 03: full dark label with brand strip
+    if (stage === 2) {
+      return (
+        <div style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", width: "100%", height: "100%", gap: 3 }}>
+          <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 5, background: "linear-gradient(90deg, #29C7F6, #5AB9FF)", borderRadius: "5px 5px 0 0" }} />
+          <div style={{ width: 30, height: 1.5, borderRadius: 1, background: "#29C7F6" }} />
+          <div style={{ fontSize: 9, fontWeight: 900, letterSpacing: "0.12em", color: "#29C7F6" }}>NOORI AQUA</div>
+          <div style={{ width: 22, height: 0.75, borderRadius: 1, background: "rgba(41,199,246,0.35)" }} />
+          <div style={{ fontSize: 6, letterSpacing: "0.16em", color: "#94A3B8", textTransform: "uppercase" }}>Custom Bottles</div>
+          <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 3, background: "rgba(41,199,246,0.25)", borderRadius: "0 0 5px 5px" }} />
+        </div>
+      );
+    }
+    // Stages 04–06: progressively more polished
+    const brandOpacity = stage === 3 ? 0.75 : stage === 4 ? 0.88 : 1.0;
+    return (
+      <div style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", width: "100%", height: "100%", gap: 2 }}>
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 6, background: `linear-gradient(90deg, rgba(41,199,246,${brandOpacity}), rgba(90,185,255,${brandOpacity}))`, borderRadius: "6px 6px 0 0" }} />
+        <div style={{ width: 32, height: 1.5, borderRadius: 1, background: `rgba(41,199,246,${brandOpacity})` }} />
+        <div style={{ fontSize: 10, fontWeight: 900, letterSpacing: "0.12em", color: `rgba(41,199,246,${brandOpacity})` }}>NOORI AQUA</div>
+        <div style={{ width: "65%", height: 0.75, background: `rgba(41,199,246,${brandOpacity * 0.4})`, borderRadius: 1 }} />
+        <div style={{ fontSize: 6, letterSpacing: "0.16em", color: "#94A3B8", textTransform: "uppercase" }}>Pure Water</div>
+        <div style={{ fontSize: 5.5, color: "#475569", letterSpacing: "0.08em" }}>500ml</div>
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 4, background: `rgba(41,199,246,${brandOpacity * 0.22})`, borderRadius: "0 0 6px 6px" }} />
+      </div>
+    );
+  };
+
+  // Smaller side bottle used in "In Production" stage
+  const sideBottle = (dy: number, opacity: number) => (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: 58, opacity, transform: `translateY(${dy}px)` }}>
+      <div style={{ width: 24, height: 11, borderRadius: "3px 3px 0 0", background: cfg.capColor, flexShrink: 0, boxShadow: `0 1px 8px ${cfg.capColor}50` }} />
+      <div style={{ width: 18, height: 8, background: `${cfg.capColor}40`, flexShrink: 0 }} />
+      <div style={{ width: "100%", position: "relative", overflow: "hidden", height: 110, borderRadius: "5px 5px 12px 12px", background: cfg.bodyBg, border: "1px solid rgba(200,230,255,0.14)" }}>
+        {/* Side bottle label */}
+        <div style={{ position: "absolute", top: "26%", left: "14%", right: "14%", height: "46%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", overflow: "hidden", background: "linear-gradient(160deg, #07111F, #0D1B2A)", borderRadius: 3, border: "1px solid rgba(41,199,246,0.28)" }}>
+          <div style={{ fontSize: 5.5, fontWeight: 900, letterSpacing: "0.10em", color: "rgba(41,199,246,0.80)" }}>NOORI AQUA</div>
+          <div style={{ width: 18, height: 0.75, background: "rgba(41,199,246,0.25)", borderRadius: 1, marginTop: 2 }} />
+        </div>
+        {/* Left glass highlight */}
+        <div style={{ position: "absolute", left: "12%", top: "8%", height: "55%", width: 5, borderRadius: 999, background: "rgba(255,255,255,0.15)" }} />
+        {/* Right shadow */}
+        <div style={{ position: "absolute", right: 0, top: 0, height: "100%", width: "16%", background: "rgba(0,0,0,0.09)" }} />
+      </div>
+    </div>
+  );
 
   return (
-    <div className="flex items-end gap-4 justify-center">
-      {isMultiple && (
-        <div className="flex flex-col items-center" style={{ width: 46, height: 120, opacity: 0.55, transform: "scale(0.85) translateY(8px)" }}>
-          <div style={{ width: 18, height: 10, borderRadius: "3px 3px 0 0", background: s.capColor }} />
-          <div style={{ width: 14, height: 8, background: `${s.capColor}60` }} />
-          <div
-            className="w-full flex-1 relative"
-            style={{
-              borderRadius: "2px 2px 8px 8px",
-              ...s.bodyBg ? { background: s.bodyBg } : {},
-              border: "1px solid rgba(200,220,240,0.15)",
-            }}
-          />
-        </div>
-      )}
+    <div style={{ display: "flex", alignItems: "flex-end", gap: 12, justifyContent: "center" }}>
+      {isProduction && sideBottle(10, 0.48)}
 
       {/* Main bottle */}
-      <div className="flex flex-col items-center relative" style={{ width: 80, height: 220 }}>
-        {/* Glow if delivered */}
-        {stage === 5 && (
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: "radial-gradient(ellipse 120% 80% at 50% 60%, rgba(41,199,246,0.2) 0%, transparent 70%)",
-            }}
-          />
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", position: "relative", width: BOTTLE_W }}>
+        {/* Stage glow */}
+        {cfg.glowColor && (
+          <div style={{ position: "absolute", top: -24, bottom: -24, left: -30, right: -30, background: `radial-gradient(ellipse 70% 60% at 50% 58%, ${cfg.glowColor} 0%, transparent 68%)`, pointerEvents: "none", zIndex: 0 }} />
         )}
         {/* Cap */}
-        <div
-          style={{
-            width: 34,
-            height: 18,
-            borderRadius: "5px 5px 0 0",
-            background: s.capColor,
-            boxShadow: `0 2px 12px ${s.capColor}50`,
-            flexShrink: 0,
-          }}
-        />
+        <div style={{ width: 40, height: CAP_H, borderRadius: "5px 5px 0 0", background: cfg.capColor, boxShadow: cfg.capGlow ? `0 2px 16px ${cfg.capColor}60` : "0 1px 4px rgba(0,0,0,0.3)", flexShrink: 0, position: "relative", zIndex: 2 }} />
         {/* Neck */}
-        <div
-          style={{
-            width: 26,
-            height: 16,
-            background: `${s.capColor}45`,
-            flexShrink: 0,
-          }}
-        />
+        <div style={{ width: 30, height: NECK_H, background: `${cfg.capColor}42`, flexShrink: 0, position: "relative", zIndex: 2 }} />
         {/* Body */}
-        <div
-          className="w-full flex-1 relative overflow-hidden"
-          style={{
-            borderRadius: "4px 4px 14px 14px",
-            background: s.bodyBg,
-            border: "1px solid rgba(200,230,255,0.18)",
-          }}
-        >
-          {/* Label area */}
-          {s.hasLabel && (
-            <div
-              className="absolute flex flex-col items-center justify-center gap-1.5"
-              style={{
-                top: "12%",
-                left: "9%",
-                right: "9%",
-                height: "52%",
-                borderRadius: 4,
-                ...s.labelStyle,
-              }}
-            >
-              {s.hasLogo && (
-                <>
-                  {/* Logo icon placeholder */}
-                  <div
-                    style={{
-                      width: "60%",
-                      height: 3,
-                      borderRadius: 2,
-                      background: stage >= 2 ? "#29C7F6" : "#64748B",
-                    }}
-                  />
-                  <div
-                    style={{
-                      fontSize: 9,
-                      fontWeight: 800,
-                      letterSpacing: "0.06em",
-                      color: stage >= 2 ? "#29C7F6" : "#64748B",
-                    }}
-                  >
-                    YOUR BRAND
-                  </div>
-                  {stage >= 2 && (
-                    <div
-                      style={{ width: "40%", height: 2, borderRadius: 2, background: "rgba(41,199,246,0.4)" }}
-                    />
-                  )}
-                </>
-              )}
+        <div style={{ width: BOTTLE_W, height: BODY_H, borderRadius: "8px 8px 18px 18px", background: cfg.bodyBg, border: "1px solid rgba(200,230,255,0.18)", position: "relative", overflow: "hidden", zIndex: 1 }}>
+          {/* Label */}
+          {cfg.hasLabel && (
+            <div style={{ position: "absolute", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", ...getLabelPos(), ...getLabelStyle() }}>
+              {getLabelContent()}
             </div>
           )}
-          {/* Shine */}
-          {s.shine && (
-            <div
-              className="absolute"
-              style={{
-                top: 8,
-                left: "14%",
-                width: 6,
-                height: "52%",
-                borderRadius: 5,
-                background: "rgba(255,255,255,0.25)",
-              }}
-            />
-          )}
-          {/* Stage number watermark */}
-          {stage === 0 && (
-            <div
-              className="absolute inset-0 flex items-center justify-center"
-              style={{
-                fontSize: 10,
-                color: "rgba(200,220,240,0.3)",
-                letterSpacing: "0.12em",
-                fontWeight: 700,
-              }}
-            >
-              BLANK
-            </div>
+          {/* Left glass highlight */}
+          <div style={{ position: "absolute", left: "12%", top: "8%", height: "58%", width: 7, borderRadius: 999, background: "rgba(255,255,255,0.20)" }} />
+          {/* Right shadow */}
+          <div style={{ position: "absolute", right: 0, top: 0, height: "100%", width: "18%", background: "rgba(0,0,0,0.10)" }} />
+          {/* Bottom reflection */}
+          <div style={{ position: "absolute", bottom: 0, left: "18%", right: "18%", height: 12, borderRadius: 999, background: "rgba(100,220,255,0.10)", filter: "blur(6px)" }} />
+          {/* Delivered green floor glow */}
+          {stage === 5 && (
+            <div style={{ position: "absolute", bottom: 0, left: "8%", right: "8%", height: 22, borderRadius: 999, background: "rgba(37,211,102,0.12)", filter: "blur(8px)" }} />
           )}
         </div>
       </div>
 
-      {isMultiple && (
-        <div className="flex flex-col items-center" style={{ width: 46, height: 120, opacity: 0.55, transform: "scale(0.85) translateY(8px)" }}>
-          <div style={{ width: 18, height: 10, borderRadius: "3px 3px 0 0", background: s.capColor }} />
-          <div style={{ width: 14, height: 8, background: `${s.capColor}60` }} />
-          <div
-            className="w-full flex-1 relative"
-            style={{
-              borderRadius: "2px 2px 8px 8px",
-              background: s.bodyBg,
-              border: "1px solid rgba(200,220,240,0.15)",
-            }}
-          />
-        </div>
-      )}
+      {isProduction && sideBottle(-8, 0.48)}
     </div>
   );
 }
