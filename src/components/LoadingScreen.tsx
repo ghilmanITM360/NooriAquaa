@@ -37,12 +37,20 @@ export default function LoadingScreen() {
               >
                 <Droplets className="w-6 h-6 text-white" />
               </div>
-              <span
-                className="text-3xl font-bold text-white tracking-tight"
-                style={{ fontFamily: "'Sora', sans-serif" }}
-              >
-                Noori Aqua
-              </span>
+              <div className="flex flex-col leading-none gap-[4px]">
+                <span
+                  className="text-3xl font-bold text-white tracking-tight leading-none"
+                  style={{ fontFamily: "'Sora', sans-serif" }}
+                >
+                  Noori Aqua
+                </span>
+                <span
+                  className="text-[11px] uppercase tracking-[0.18em] leading-none"
+                  style={{ fontFamily: "'Sora', sans-serif", color: "#38BDF8", fontWeight: 500 }}
+                >
+                  Premium Drinking Water
+                </span>
+              </div>
             </div>
 
             {/* Progress bar */}

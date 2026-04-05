@@ -66,19 +66,28 @@ export default function Footer() {
                   background: "rgba(10,20,35,0.75)",
                 }}
               >
-                <img src="/logo.png" alt="Noori Aqua" className="w-full h-full object-cover" />
+                <img src="/logo.png" alt="Noori Aqua Premium Drinking Water" className="w-full h-full object-cover" />
               </div>
-              <span
-                className="text-[18px] font-bold text-white"
-                style={{ fontFamily: "'Sora', sans-serif" }}
-              >
-                Noori Aqua
-              </span>
+              <div className="flex flex-col leading-none gap-[3px]">
+                <span
+                  className="text-[18px] font-bold text-white leading-none"
+                  style={{ fontFamily: "'Sora', sans-serif" }}
+                >
+                  Noori Aqua
+                </span>
+                <span
+                  className="text-[10px] uppercase tracking-[0.18em] leading-none"
+                  style={{ fontFamily: "'Sora', sans-serif", color: "#0EA5E9", fontWeight: 500 }}
+                >
+                  Premium Drinking Water
+                </span>
+              </div>
             </a>
 
             <p className="text-sm leading-relaxed max-w-xs" style={{ color: "#64748B" }}>
-              Karachi&apos;s premier custom branded water bottle manufacturer for
-              businesses, events, and organizations.
+              Trusted by businesses across Karachi to deliver Noori Aqua
+              Premium Drinking Water — custom branded for restaurants, hotels,
+              events, and organizations.
             </p>
 
             {/* Contact details */}
@@ -160,7 +169,7 @@ export default function Footer() {
           style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}
         >
           <p className="text-xs" style={{ color: "#334155" }}>
-            © {new Date().getFullYear()} Noori Aqua. All rights reserved.
+            © {new Date().getFullYear()} Noori Aqua Premium Drinking Water. All rights reserved.
           </p>
           <div className="flex gap-5">
             {["Privacy Policy", "Terms of Service"].map((item) => (

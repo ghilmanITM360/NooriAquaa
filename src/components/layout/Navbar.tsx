@@ -70,19 +70,31 @@ export default function Navbar() {
               >
                 <img
                   src="/logo.png"
-                  alt="Noori Aqua"
+                  alt="Noori Aqua Premium Drinking Water"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <span
-                className="text-[19px] font-bold tracking-[-0.03em] transition-colors duration-300"
-                style={{
-                  fontFamily: "'Sora', sans-serif",
-                  color: scrolled ? "#0B1320" : "#F8FAFC",
-                }}
-              >
-                Noori Aqua
-              </span>
+              <div className="flex flex-col leading-none gap-[3px]">
+                <span
+                  className="text-[19px] font-bold tracking-[-0.03em] transition-colors duration-300 leading-none"
+                  style={{
+                    fontFamily: "'Sora', sans-serif",
+                    color: scrolled ? "#0B1320" : "#F8FAFC",
+                  }}
+                >
+                  Noori Aqua
+                </span>
+                <span
+                  className="text-[10px] uppercase tracking-[0.18em] leading-none transition-colors duration-300"
+                  style={{
+                    fontFamily: "'Sora', sans-serif",
+                    color: scrolled ? "#0EA5E9" : "#38BDF8",
+                    fontWeight: 500,
+                  }}
+                >
+                  Premium Drinking Water
+                </span>
+              </div>
             </a>
 
             {/* Desktop Nav */}

@@ -229,7 +229,7 @@ export default function Hero() {
 
                 <img
                   src="/waterBottle.png"
-                  alt="Custom Branded Water Bottle by Noori Aqua"
+                  alt="Custom Branded Water Bottle by Noori Aqua Premium Drinking Water"
                   className="relative z-10 w-[200px] lg:w-[240px]"
                   style={{
                     filter:

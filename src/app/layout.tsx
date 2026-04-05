@@ -2,11 +2,25 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Noori Aqua — Custom Branded Water Bottles Karachi",
+  title: "Noori Aqua Premium Drinking Water | Custom Branded Water Bottles Karachi",
   description:
-    "Noori Aqua manufactures custom branded water bottles for restaurants, hotels, weddings, conferences, corporate events, schools, and MUNs across Karachi.",
+    "Noori Aqua Premium Drinking Water manufactures custom branded water bottles for restaurants, hotels, weddings, conferences, corporate events, schools, and MUNs across Karachi.",
   keywords:
-    "custom branded water bottles Karachi, custom label water bottles, branded bottle manufacturer, corporate water bottles, event water bottles Karachi",
+    "custom branded water bottles Karachi, Noori Aqua premium drinking water, custom label water bottles, branded bottle manufacturer, corporate water bottles, event water bottles Karachi",
+  openGraph: {
+    title: "Noori Aqua Premium Drinking Water | Custom Branded Water Bottles Karachi",
+    description:
+      "Noori Aqua Premium Drinking Water — Karachi's premier custom branded water bottle manufacturer for businesses, events, and organizations.",
+    type: "website",
+    locale: "en_PK",
+    siteName: "Noori Aqua Premium Drinking Water",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Noori Aqua Premium Drinking Water | Custom Branded Water Bottles Karachi",
+    description:
+      "Noori Aqua Premium Drinking Water — Karachi's premier custom branded water bottle manufacturer.",
+  },
 };
 
 export default function RootLayout({
