@@ -134,7 +134,7 @@ function GalleryCard({
           {item.title}
         </h3>
         <p className={quoteClass} style={{ color: "#64748B" }}>
-          "{item.quote}"
+          &ldquo;{item.quote}&rdquo;
         </p>
         {/* Accent line */}
         <div

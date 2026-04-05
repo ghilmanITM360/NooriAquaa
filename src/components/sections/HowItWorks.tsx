@@ -5,8 +5,6 @@ import { ArrowRight } from "lucide-react";
 import { processSteps } from "@/data/process";
 import { WHATSAPP_LINKS } from "@/data/config";
 
-const stepIcons = ["✉️", "🎨", "✅", "🚛"];
-
 export default function HowItWorks() {
   return (
     <section

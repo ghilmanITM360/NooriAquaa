@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { bottleSizes, capColors, labelStyles, customizationChips } from "@/data/bottleOptions";
 
 interface CSSBottleProps {

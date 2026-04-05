@@ -63,7 +63,7 @@ export default function LoadingScreen() {
               className="text-sm tracking-widest uppercase"
               style={{ color: "#94A3B8" }}
             >
-              Premium Water Delivery
+              Custom Branded Bottles
             </p>
           </motion.div>
         </motion.div>

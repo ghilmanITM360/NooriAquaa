@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Noori Aqua — Premium Water Delivery Karachi",
+  title: "Noori Aqua — Custom Branded Water Bottles Karachi",
   description:
-    "Noori Aqua provides premium 19L water bottle delivery across Karachi for homes, restaurants, offices, hotels, weddings, conferences, and events.",
+    "Noori Aqua manufactures custom branded water bottles for restaurants, hotels, weddings, conferences, corporate events, schools, and MUNs across Karachi.",
   keywords:
-    "water delivery Karachi, 19L bottle delivery, office water supply, event water Karachi, bulk water delivery",
+    "custom branded water bottles Karachi, custom label water bottles, branded bottle manufacturer, corporate water bottles, event water bottles Karachi",
 };
 
 export default function RootLayout({

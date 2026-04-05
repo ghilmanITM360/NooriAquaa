@@ -100,7 +100,7 @@ export default function Testimonials() {
                 className="text-[20px] lg:text-[24px] font-medium leading-[1.4] text-white tracking-[-0.01em] flex-1"
                 style={{ fontFamily: "'Sora', sans-serif" }}
               >
-                "{featured.quote}"
+                &ldquo;{featured.quote}&rdquo;
               </blockquote>
 
               {/* Meta row */}
@@ -169,7 +169,7 @@ export default function Testimonials() {
                   className="text-[14px] leading-relaxed flex-1"
                   style={{ color: "#334155" }}
                 >
-                  "{t.quote}"
+                  &ldquo;{t.quote}&rdquo;
                 </blockquote>
 
                 {/* Meta */}

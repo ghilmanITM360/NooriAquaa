@@ -77,7 +77,7 @@ export default function Footer() {
             </a>
 
             <p className="text-sm leading-relaxed max-w-xs" style={{ color: "#64748B" }}>
-              Karachi's premier custom branded water bottle manufacturer for
+              Karachi&apos;s premier custom branded water bottle manufacturer for
               businesses, events, and organizations.
             </p>
 
