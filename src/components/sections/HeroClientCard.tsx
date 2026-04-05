@@ -68,7 +68,7 @@ export default function HeroClientCard({ brand, index }: Props) {
           className="text-[10px] font-bold uppercase tracking-[0.24em]"
           style={{ color: `${brand.glowColor}99` }}
         >
-          {brand.category}
+          {brand.type}
         </span>
 
         {/* Logo with soft glow halo */}

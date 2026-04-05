@@ -6,7 +6,6 @@ export interface Brand {
   glowColor: string;
   borderColor: string;
   description?: string;
-  category?: string;
   logoClass?: string;
 }
 
@@ -19,7 +18,6 @@ export const brands: Brand[] = [
     glowColor: "#D4A84F",
     borderColor: "#D4A84F",
     description: "Premium branded bottles for flagship events and customer gifting.",
-    category: "Luxury Fashion & Lifestyle",
     logoClass: "max-h-[88px] w-auto object-contain",
   },
   {
@@ -30,7 +28,6 @@ export const brands: Brand[] = [
     glowColor: "#C62828",
     borderColor: "#C62828",
     description: "Custom branded bottles created for premium dining experiences.",
-    category: "Restaurant & Hospitality",
     logoClass: "max-h-[80px] w-auto object-contain scale-[0.95]",
   },
   {

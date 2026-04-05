@@ -50,7 +50,7 @@ export default function BrandTile({ brand, index }: Props) {
 
       {/* Hover border highlight */}
       <div
-        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none"
+        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
         style={{ border: `1px solid ${brand.glowColor}25` }}
       />
     </motion.div>
