@@ -19,7 +19,7 @@ export default function BrandTile({ brand, index }: Props) {
       whileHover={{ y: -3, transition: { duration: 0.3, ease: "easeOut" } }}
       className="relative overflow-hidden rounded-2xl flex items-center justify-center cursor-default group"
       style={{
-        height: "100px",
+        height: "120px",
         background: "rgba(255,255,255,0.02)",
         border: "1px solid rgba(255,255,255,0.06)",
         backdropFilter: "blur(12px)",
@@ -33,19 +33,25 @@ export default function BrandTile({ brand, index }: Props) {
         }}
       />
 
-      {/* Logo */}
+      {/* Logo + type label */}
       <motion.div
         whileHover={{ scale: 1.04 }}
         transition={{ duration: 0.35 }}
-        className="relative z-10"
+        className="relative z-10 flex flex-col items-center gap-2.5 px-3"
       >
         <Image
           src={brand.image}
           alt={brand.name}
           width={130}
           height={65}
-          className={brand.logoClass || "max-h-[42px] w-auto object-contain"}
+          className={brand.logoClass || "max-h-[54px] lg:max-h-[64px] w-auto object-contain"}
         />
+        <span
+          className="text-[9px] font-bold uppercase tracking-[0.2em] text-center leading-tight"
+          style={{ color: "rgba(148,163,184,0.45)" }}
+        >
+          {brand.type}
+        </span>
       </motion.div>
 
       {/* Hover border highlight */}
