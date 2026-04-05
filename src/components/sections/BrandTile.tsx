@@ -10,6 +10,18 @@ interface Props {
 }
 
 export default function BrandTile({ brand, index }: Props) {
+  const tileClass = [
+    "relative overflow-hidden rounded-2xl flex items-center justify-center cursor-default group",
+    brand.cardClass,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const imageClass = [
+    "object-contain transition-all duration-300 group-hover:scale-[1.03]",
+    brand.logoClass || "max-h-[54px] lg:max-h-[64px] w-auto",
+  ].join(" ");
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -17,7 +29,7 @@ export default function BrandTile({ brand, index }: Props) {
       viewport={{ once: true }}
       transition={{ duration: 0.7, delay: 0.45 + index * 0.08, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ y: -3, transition: { duration: 0.3, ease: "easeOut" } }}
-      className="relative overflow-hidden rounded-2xl flex items-center justify-center cursor-default group"
+      className={tileClass}
       style={{
         height: "120px",
         background: "rgba(255,255,255,0.02)",
@@ -33,6 +45,13 @@ export default function BrandTile({ brand, index }: Props) {
         }}
       />
 
+      {/* Static size glow for wide logos */}
+      {brand.glowClass && (
+        <div
+          className={`absolute pointer-events-none ${brand.glowClass}`}
+        />
+      )}
+
       {/* Logo + type label */}
       <motion.div
         whileHover={{ scale: 1.04 }}
@@ -42,9 +61,9 @@ export default function BrandTile({ brand, index }: Props) {
         <Image
           src={brand.image}
           alt={brand.name}
-          width={130}
-          height={65}
-          className={brand.logoClass || "max-h-[54px] lg:max-h-[64px] w-auto object-contain"}
+          width={300}
+          height={120}
+          className={imageClass}
         />
         <span
           className="text-[9px] font-bold uppercase tracking-[0.2em] text-center leading-tight"
