@@ -74,7 +74,7 @@ export default function HeroClientCard({ brand, index }: Props) {
         {/* Logo with soft glow halo */}
         <div className="relative flex items-center justify-center py-2">
           <div
-            className="absolute w-[180px] h-[90px] blur-[50px] opacity-25 group-hover:opacity-45 transition-opacity duration-700"
+            className="absolute w-[220px] h-[110px] blur-[60px] opacity-25 group-hover:opacity-50 transition-opacity duration-700"
             style={{ background: brand.glowColor }}
           />
           <motion.div
@@ -84,29 +84,39 @@ export default function HeroClientCard({ brand, index }: Props) {
             <Image
               src={brand.image}
               alt={brand.name}
-              width={240}
-              height={120}
-              className={brand.logoClass || "max-h-[88px] w-auto object-contain"}
+              width={300}
+              height={150}
+              className={brand.logoClass || "max-h-[110px] lg:max-h-[130px] w-auto object-contain"}
               priority
             />
           </motion.div>
         </div>
 
-        {/* Descriptor */}
+        {/* Premium descriptor */}
         <p
-          className="text-[12px] leading-relaxed max-w-[260px]"
-          style={{ color: "rgba(148,163,184,0.48)" }}
+          className="text-[12.5px] leading-relaxed max-w-[280px]"
+          style={{ color: "rgba(148,163,184,0.6)" }}
         >
-          {brand.description}
+          {brand.descriptor || brand.description}
         </p>
 
-        {/* Accent line */}
+        {/* Accent divider */}
         <div
           className="w-10 h-[1.5px] rounded-full"
           style={{
             background: `linear-gradient(90deg, transparent, ${brand.glowColor}55, transparent)`,
           }}
         />
+
+        {/* Tags meta row */}
+        {brand.tags && (
+          <p
+            className="text-[10px] font-semibold uppercase tracking-[0.2em]"
+            style={{ color: `${brand.glowColor}70` }}
+          >
+            {brand.tags}
+          </p>
+        )}
       </div>
 
       {/* Hover border highlight */}
