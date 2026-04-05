@@ -1,66 +1,100 @@
 export interface GalleryItem {
+  id: string;
   title: string;
-  type: string;
-  quantity: string;
-  quote: string;
+  category: string;
+  description: string;
   image: string;
   accent: string;
-  labelColor: string;
+  /** Number of grid columns this card occupies on desktop */
+  colSpan: 1 | 2;
 }
 
+/**
+ * Layout (4-column desktop grid, 3 rows):
+ *   Row 1: [conferences ×2] [hotels ×1]  [weddings ×1]
+ *   Row 2: [offices ×1]    [restaurants ×2] [mun ×1]
+ *   Row 3: [school ×2]     [sports ×2]
+ */
 export const galleryItems: GalleryItem[] = [
+  // ── Row 1 ──────────────────────────────────────────────────────────────────
   {
-    title: "Annual Tech Summit",
-    type: "Corporate Conference",
-    quantity: "500 bottles",
-    quote: "Crisp printing, delivered on schedule.",
-    image: "/gallery/conference.jpg",
-    accent: "#8B5CF6",
-    labelColor: "#8B5CF680",
+    id: "conferences",
+    title: "Corporate Conferences",
+    category: "Premium Events",
+    description:
+      "High-profile summits and corporate gatherings branded bottle-to-bottle.",
+    image: "/industries/conferences.png",
+    accent: "#6366F1",
+    colSpan: 2,
   },
   {
-    title: "Sabrina & Omar Wedding",
-    type: "Wedding Ceremony",
-    quantity: "300 bottles",
-    quote: "Beautiful keepsakes for every guest.",
-    image: "/gallery/wedding.jpg",
-    accent: "#EC4899",
-    labelColor: "#EC489980",
-  },
-  {
-    title: "The Grill House",
-    type: "Restaurant · Monthly",
-    quantity: "200 bottles / mo",
-    quote: "Our tables look professional now.",
-    image: "/gallery/restaurant.jpg",
-    accent: "#F59E0B",
-    labelColor: "#F59E0B80",
-  },
-  {
-    title: "Karachi MUN 2024",
-    type: "MUN Tournament",
-    quantity: "450 bottles",
-    quote: "Every delegate desk, branded.",
-    image: "/gallery/mun.jpg",
-    accent: "#10B981",
-    labelColor: "#10B98180",
-  },
-  {
-    title: "Pearl Grand Hotel",
-    type: "Hotel Guest Rooms",
-    quantity: "800 bottles / mo",
-    quote: "Guests notice the premium touch.",
-    image: "/gallery/hotel.jpg",
+    id: "hotels",
+    title: "Luxury Hotels",
+    category: "Hospitality",
+    description:
+      "Custom-labeled water that elevates every guest room and fine-dining table.",
+    image: "/industries/hotels.png",
     accent: "#29C7F6",
-    labelColor: "#29C7F680",
+    colSpan: 1,
   },
   {
-    title: "Apex Corp AGM",
-    type: "Corporate Event",
-    quantity: "600 bottles",
-    quote: "Brand on every surface. Loved it.",
-    image: "/gallery/corporate.jpg",
-    accent: "#64748B",
-    labelColor: "#64748B80",
+    id: "weddings",
+    title: "Premium Weddings",
+    category: "Celebrations",
+    description:
+      "Elegant keepsake bottles that make every guest feel the love.",
+    image: "/industries/weddings.png",
+    accent: "#EC4899",
+    colSpan: 1,
+  },
+  // ── Row 2 ──────────────────────────────────────────────────────────────────
+  {
+    id: "offices",
+    title: "Corporate Offices",
+    category: "Workplace",
+    description: "Daily branded hydration that keeps teams proud of their space.",
+    image: "/industries/offices.png",
+    accent: "#10B981",
+    colSpan: 1,
+  },
+  {
+    id: "restaurants",
+    title: "Fine Dining",
+    category: "F&B Industry",
+    description:
+      "Elevate table presentation — guests notice the premium touch.",
+    image: "/industries/restaurants.png",
+    accent: "#F59E0B",
+    colSpan: 2,
+  },
+  {
+    id: "mun",
+    title: "MUN Tournaments",
+    category: "Academic Events",
+    description:
+      "Professional branding on every delegate desk at Karachi MUN 2024.",
+    image: "/industries/mun.png",
+    accent: "#8B5CF6",
+    colSpan: 1,
+  },
+  // ── Row 3 ──────────────────────────────────────────────────────────────────
+  {
+    id: "school",
+    title: "Schools & Universities",
+    category: "Education",
+    description: "Campus-branded bottles that build school pride every day.",
+    image: "/industries/school.png",
+    accent: "#06B6D4",
+    colSpan: 2,
+  },
+  {
+    id: "sports",
+    title: "Sports Events",
+    category: "Athletics",
+    description:
+      "Keep athletes hydrated with your brand front and center on every bottle.",
+    image: "/industries/sports.png",
+    accent: "#EF4444",
+    colSpan: 2,
   },
 ];
